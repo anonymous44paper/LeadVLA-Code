@@ -1,0 +1,14 @@
+{
+  "seed": 7,
+  "episodes": 4,
+  "environments": ["example_indoor", "example_outdoor"],
+  "routes": ["example_straight", "example_turn"],
+  "robots": ["example_robot"],
+  "actors": ["teal_top_red_pants", "white_top_gray_pants"],
+  "scenes": ["example_clean", "example_interference"],
+  "sensors": ["front_rgb", "rear_rgb"],
+  "compatible_interactions": [
+    {"motion": "steady_tracking", "presence": "normal_visible", "formation": "far_center", "multi_person": false},
+    {"motion": "stop_recover", "presence": "normal_visible", "formation": "near_left", "multi_person": true}
+  ]
+}

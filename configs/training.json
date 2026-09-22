@@ -1,0 +1,19 @@
+{
+  "backbone": "Qwen3-VL-2B-Instruct",
+  "vision_tower_frozen": true,
+  "action_queries": 24,
+  "explicit_semantic_fusion": ["lateral", "formation"],
+  "fusion_destination": "residual",
+  "composer": {"horizon": 24, "trajectory_dt": 0.2, "nominal_speed_mps": 0.75, "acceleration_mps2": 0.5, "deceleration_mps2": 0.6},
+  "loss": {"waypoint": 1.0, "pace": 1.0, "residual": 1.0, "residual_norm": 0.001, "residual_smooth": 0.02, "bbox": 1.0, "classification": 0.5, "semantic": 0.25},
+  "optimizer": {"name": "AdamW", "betas": [0.9, 0.95], "eps": 1e-8, "weight_decay": 1e-8, "backbone_lr": 2e-5, "residual_lr": 1e-5, "control_lr": 1e-4, "gradient_clip_norm": 1.0},
+  "schedule": "constant_with_linear_warmup",
+  "precision": "bf16",
+  "distributed": "zero_stage_2",
+  "gradient_checkpointing": true,
+  "stages": [
+    {"stage": 1, "approximate_samples": 200000, "initialization": "pretrained_backbone"},
+    {"stage": 2, "approximate_samples": 4000000, "initialization": "selected_stage_1_weights", "reset_optimizer_and_scheduler": true}
+  ],
+  "checkpoint_selection": "minimum_validation_total_loss"
+}
