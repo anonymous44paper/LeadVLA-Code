@@ -73,8 +73,8 @@ LeadVLA-Code/
 
 Python **3.10+** is required. Run the following from a terminal:
 
+Download this repo, then
 ```bash
-git clone https://github.com/anonymous44paper/LeadVLA-Code.git
 cd LeadVLA-Code
 python -m venv .venv
 source .venv/bin/activate
